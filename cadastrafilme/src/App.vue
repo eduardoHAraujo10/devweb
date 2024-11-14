@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <MovieList />
+    <CadastroMovie />
+    <ListaMovie />
+    <TelaInicial />
   </div>
 </template>
 
 <script>
-import MovieList from './components/MovieList.vue';
+import CadastroMovie from './components/CadastroMovie.vue';
+import ListaMovie from './components/ListaMovie.vue';
+import TelaInicial from './components/TelaInicial.vue';
 
 export default {
   name: 'App',
   components: {
-    MovieList
+    CadastroMovie,
+    ListaMovie,
+    TelaInicial
   }
 };
 </script>

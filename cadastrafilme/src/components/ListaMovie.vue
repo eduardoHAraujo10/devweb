@@ -9,14 +9,6 @@
         <button @click="addMovie">Adicionar Filme</button>
       </div>
   
-      <p v-if="filmes.length === 0">Nenhum filme cadastrado.</p>
-  
-      <ul v-else>
-        <li v-for="(movie, index) in filmes" :key="index">
-          <span><strong>{{ movie.titulo }}</strong> - {{ movie.diretor }} ({{ movie.ano }})</span>
-          <button @click="deleteMovie(index)">Remover</button>
-        </li>
-      </ul>
     </div>
   </template>
   
