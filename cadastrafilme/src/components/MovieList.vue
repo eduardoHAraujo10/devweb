@@ -2,21 +2,18 @@
     <div class="movie-list">
       <h2>Cadastro de Filmes</h2>
   
-      <!-- Inputs para adicionar um filme -->
       <div class="input-fields">
-        <input v-model="newMovie.title" placeholder="Título do Filme" />
-        <input v-model="newMovie.director" placeholder="Diretor" />
-        <input v-model="newMovie.year" type="number" placeholder="Ano de Lançamento" />
+        <input v-model="novoFilme.titulo" placeholder="Título do Filme" />
+        <input v-model="novoFilme.diretor" placeholder="Diretor" />
+        <input v-model="novoFilme.ano" type="data" placeholder="Ano de Lançamento" />
         <button @click="addMovie">Adicionar Filme</button>
       </div>
   
-      <!-- Mensagem caso a lista esteja vazia -->
-      <p v-if="movies.length === 0">Nenhum filme cadastrado.</p>
+      <p v-if="filmes.length === 0">Nenhum filme cadastrado.</p>
   
-      <!-- Exibição da lista de filmes com botões de deleção -->
       <ul v-else>
-        <li v-for="(movie, index) in movies" :key="index">
-          <span><strong>{{ movie.title }}</strong> - {{ movie.director }} ({{ movie.year }})</span>
+        <li v-for="(movie, index) in filmes" :key="index">
+          <span><strong>{{ movie.titulo }}</strong> - {{ movie.diretor }} ({{ movie.ano }})</span>
           <button @click="deleteMovie(index)">Remover</button>
         </li>
       </ul>
@@ -27,31 +24,28 @@
   export default {
     data() {
       return {
-        newMovie: {
-          title: '',
-          director: '',
-          year: ''
+        novoFilme: {
+          titulo: '',
+          diretor: '',
+          ano: ''
         },
-        movies: []
+        filmes: []
       };
     },
     methods: {
       addMovie() {
-        // Validação dos campos
-        if (!this.newMovie.title || !this.newMovie.director || !this.newMovie.year) {
+        if (!this.novoFilme.titulo || !this.novoFilme.diretor || !this.novoFilme.ano) {
           alert('Por favor, preencha todos os campos.');
           return;
         }
   
-        // Adiciona o filme à lista e limpa os campos
-        this.movies.push({ ...this.newMovie });
-        this.newMovie.title = '';
-        this.newMovie.director = '';
-        this.newMovie.year = '';
+        this.filmes.push({ ...this.novoFilme });
+        this.novoFilme.titulo = '';
+        this.novoFilme.diretor = '';
+        this.novoFilme.ano = '';
       },
       deleteMovie(index) {
-        // Remove o filme da lista com base no índice
-        this.movies.splice(index, 1);
+        this.filmes.splice(index, 1);
       }
     }
   };
