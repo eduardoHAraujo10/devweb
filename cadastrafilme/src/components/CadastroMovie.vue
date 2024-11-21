@@ -1,15 +1,14 @@
 <template>
   <div class="form-container">
-    <form @submit.prevent="submitForm">
-      <h2>Cadastro de Filme</h2>
-
+    <h1>Cadastro de Filme</h1>
+    <form @submit.prevent="cadastrarFilme">
       <label for="nome">Nome do Filme:</label>
-      <input type="text" v-model="filme.nome" id="nome" required />
+      <input type="text" id="nome" v-model="filme.nome" required />
 
       <label for="classificacao">Classificação:</label>
-      <select v-model="filme.classificacao" id="classificacao" required>
-        <option value="" disabled>Selecione a classificação</option>
-        <option value="L">Livre</option>
+      <select id="classificacao" v-model="filme.classificacao" required>
+        <option value="" disabled>Selecione</option>
+        <option value="Livre">Livre</option>
         <option value="10">10 anos</option>
         <option value="12">12 anos</option>
         <option value="14">14 anos</option>
@@ -17,13 +16,16 @@
         <option value="18">18 anos</option>
       </select>
 
-      <label for="diretor">Diretor:</label>
-      <input type="text" v-model="filme.diretor" id="diretor" required />
+      <label for="genero">Gênero do Filme:</label>
+      <input type="text" id="genero" v-model="filme.genero" required />
 
-      <label for="duracao">Tempo de Duração (min):</label>
-      <input type="number" v-model="filme.duracao" id="duracao" min="1" required />
+      <label for="produtora">Produtora:</label>
+      <input type="text" id="produtora" v-model="filme.produtora" required />
 
-      <button type="submit">Cadastrar Filme</button>
+      <label for="duracao">Duração (min):</label>
+      <input type="number" id="duracao" v-model="filme.duracao" required />
+
+      <button type="submit">Cadastrar</button>
     </form>
   </div>
 </template>
@@ -33,75 +35,89 @@ export default {
   data() {
     return {
       filme: {
-        nome: '',
-        classificacao: '',
-        diretor: '',
-        duracao: null
-      }
+        nome: "",
+        classificacao: "",
+        genero: "",
+        produtora: "",
+        duracao: null,
+      },
     };
   },
   methods: {
-    submitForm() {
-      // Processamento dos dados ou envio para um servidor
-      console.log("Filme cadastrado:", this.filme);
-
-      // Limpa o formulário após o envio
+    cadastrarFilme() {
+      const filmes = JSON.parse(localStorage.getItem("filmes")) || [];
+      filmes.push(this.filme);
+      localStorage.setItem("filmes", JSON.stringify(filmes));
+      alert("Filme cadastrado com sucesso!");
       this.filme = {
-        nome: '',
-        classificacao: '',
-        diretor: '',
-        duracao: null
+        nome: "",
+        classificacao: "",
+        genero: "",
+        produtora: "",
+        duracao: null,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f2f2f2;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
+  color: #555;
 }
 
 input,
 select {
-  width: 100%;
-  padding: 8px;
   margin-bottom: 15px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
+  background: #007bff;
   color: #fff;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background: #0056b3;
 }
 </style>

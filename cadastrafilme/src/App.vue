@@ -1,22 +1,40 @@
 <template>
   <div id="app">
-    <CadastroMovie />
-    <ListaMovie />
-    <TelaInicial />
+    <div class="container">
+      <MainSidebar />
+      <div class="content">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import CadastroMovie from './components/CadastroMovie.vue';
-import ListaMovie from './components/ListaMovie.vue';
-import TelaInicial from './components/TelaInicial.vue';
+import MainSidebar from './components/common/MainSidebar.vue';
 
 export default {
   name: 'App',
   components: {
-    CadastroMovie,
-    ListaMovie,
-    TelaInicial
-  }
+    MainSidebar,
+  },
 };
 </script>
+
+<style>
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  background-color: #f4f4f4;
+}
+</style>
