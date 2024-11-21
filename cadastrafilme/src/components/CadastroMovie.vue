@@ -62,62 +62,97 @@ export default {
 </script>
 
 <style scoped>
+/* Container principal do formulário */
 .form-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente de fundo */
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  font-family: 'Arial', sans-serif;
+  color: white;
 }
 
+/* Título do formulário */
 h1 {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 25px;
+  font-weight: bold;
 }
 
+/* Estilo do formulário */
 form {
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Espaçamento uniforme entre os elementos */
 }
 
+/* Rótulos */
 label {
-  margin-bottom: 8px;
+  font-size: 1.1rem;
   font-weight: bold;
-  color: #555;
+  color: #f1f1f1;
 }
 
+/* Campos de entrada e seleção */
 input,
 select {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
   font-size: 1rem;
   width: 100%;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1); /* Efeito interno */
+  background: rgba(255, 255, 255, 0.8); /* Fundo levemente translúcido */
 }
 
 input:focus,
 select:focus {
-  border-color: #007bff;
+  border: 2px solid #fff;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Brilho no foco */
 }
 
+/* Botão */
 button {
-  background: #007bff;
-  color: #fff;
-  padding: 10px;
+  padding: 12px;
+  background: #ff6b6b; /* Cor inicial */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease; /* Transições suaves */
 }
 
 button:hover {
-  background: #0056b3;
+  background: #e63946; /* Cor ao passar o mouse */
+  transform: translateY(-3px); /* Leve elevação */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+button:active {
+  transform: translateY(0); /* Sem elevação ao clicar */
+  box-shadow: none;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px;
+  }
 }
 </style>
